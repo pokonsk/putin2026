@@ -1,66 +1,231 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Путингейт. Скоро</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Путингейт — Это не развидеть</title>
+<meta name="description" content="Это не развидеть">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://putin2026.com/images/sm.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Путингейт. Это не развидеть">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Путингейт">
+<meta name="twitter:description" content="Это не развидеть">
+<meta name="twitter:image" content="https://putin2026.com/images/sm.jpg">
+<meta property="og:title" content="Путингейт">
+<meta property="og:description" content="Это не развидеть">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111'/%3E%3Cpath d='M9 24V9h14v15h-3V12h-8v12z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#111;
+  --paper:#fff;
+  --muted:#5c5c5c;
+  --rule:#d8d8d4;
+  --wash:#f4f4f1;
+  --accent:#9b1c1c;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;
+  --bar:3.25rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:1.125rem;line-height:1.7;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+@media (min-width:700px){body{font-size:1.1875rem}}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);
+  text-decoration-thickness:1px;text-underline-offset:.2em;overflow-wrap:anywhere}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;z-index:100;font-family:var(--sans)}
+.skip:focus{left:0}
+
+/* ---------- верхняя панель ---------- */
+.bar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--ink);font-family:var(--sans)}
+.bar-in{max-width:46rem;margin:0 auto;height:var(--bar);padding:0 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.bar-title{min-width:0;flex:1;font-size:.875rem;font-weight:700;letter-spacing:.02em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}
+.bar-title .bn{font-family:var(--mono);color:var(--accent);margin-right:.6em;font-weight:400}
+.bar-btn{display:none;flex:none;align-items:center;gap:.5rem;height:2.25rem;padding:0 .75rem;
+  border:1px solid var(--ink);background:var(--paper);color:var(--ink);
+  font:600 .8125rem/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.bar-btn:hover{background:var(--ink);color:#fff}
+.js .bar-btn{display:inline-flex}
+.bar-btn svg{width:14px;height:14px}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;width:100%;
+  background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.panel{position:absolute;top:100%;right:0;left:0;max-width:46rem;margin:0 auto}
+.panel-in{position:absolute;right:1.25rem;top:.5rem;width:min(28rem,calc(100vw - 2.5rem));
+  max-height:calc(100vh - var(--bar) - 1.5rem);overflow:auto;background:var(--paper);
+  border:1px solid var(--ink);box-shadow:0 14px 34px rgba(0,0,0,.14)}
+.panel[hidden]{display:none}
+.panel ol,.toc ol{list-style:none;margin:0;padding:0}
+.panel a,.toc a{display:flex;gap:.9rem;align-items:baseline;padding:.75rem 1rem;
+  text-decoration:none;font:400 .9375rem/1.4 var(--sans);border-bottom:1px solid var(--rule)}
+.panel li:last-child a{border-bottom:0}
+.panel a:hover,.toc a:hover{background:var(--wash);color:var(--ink)}
+.panel a[aria-current="true"]{background:var(--wash);box-shadow:inset 3px 0 0 var(--accent)}
+.n{font-family:var(--mono);font-size:.8125rem;color:var(--accent);flex:none}
+
+/* ---------- страница ---------- */
+.page{max-width:46rem;margin:0 auto;padding:0 1.25rem 7rem}
+.masthead{padding:2.75rem 0 0}
+.masthead::before{content:"";display:block;height:.5rem;background:var(--ink);margin-bottom:2rem}
+h1{margin:0;font-family:var(--serif);font-weight:700;letter-spacing:-.025em;line-height:1;
+  font-size:clamp(2.75rem,12vw,5rem);overflow-wrap:anywhere}
+.sub{margin:1rem 0 0;font-size:clamp(1.25rem,4.4vw,1.6rem);line-height:1.3;font-style:italic;color:var(--muted)}
+.author{margin-top:1.75rem;border:1px solid var(--rule);font-family:var(--sans)}
+.author summary{cursor:pointer;list-style:none;padding:.8rem 1rem;font-size:.875rem;font-weight:700;
+  display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.author summary::-webkit-details-marker{display:none}
+.author summary::after{content:"+";font:400 1.25rem/1 var(--mono);color:var(--accent);flex:none}
+.author[open] summary::after{content:"\2212"}
+.author[open] summary{border-bottom:1px solid var(--rule)}
+.author-body{padding:.25rem 1rem .5rem}
+.author-body p{margin:.7rem 0;font-size:.9375rem;line-height:1.6}
+
+.intro{padding-top:2.25rem}
+p{margin:0 0 1.2em}
+
+.toc{margin:2.75rem 0 .5rem;border-top:4px solid var(--ink);border-bottom:1px solid var(--ink)}
+.toc-h{margin:0;padding:.9rem 1rem .8rem;font:700 .75rem/1 var(--sans);letter-spacing:.14em;
+  text-transform:uppercase;border-bottom:1px solid var(--ink);border-top:0}
+.toc .n{min-width:1.6rem}
+.toc li:last-child a{border-bottom:0}
+.toc a:hover .t{text-decoration:underline;text-decoration-color:var(--accent)}
+
+section{scroll-margin-top:calc(var(--bar) + .75rem);margin-top:4.25rem}
+section>h2{margin:0 0 1.5rem;padding-top:1.1rem;border-top:1px solid var(--ink);
+  font-family:var(--serif);font-weight:700;font-size:clamp(1.6rem,6vw,2.1rem);line-height:1.18;
+  letter-spacing:-.01em;text-wrap:balance}
+.num{display:block;margin-bottom:.7rem;font:400 .8125rem/1 var(--mono);letter-spacing:.12em;color:var(--accent)}
+
+blockquote{margin:2rem 0;padding:.2rem 0 .2rem 1.25rem;border-left:3px solid var(--accent)}
+blockquote p{margin:0;font-size:1.3em;line-height:1.4;font-style:italic;letter-spacing:-.005em}
+
+.note{margin:2rem 0;padding:1rem 1.15rem 1.05rem;background:var(--wash);border-top:2px solid var(--ink);
+  font-family:var(--sans);font-size:.95rem;line-height:1.6}
+.note p{margin:0}
+
+.fig{margin:2.5rem 0}
+.fig img{display:block;width:100%;max-width:var(--w);height:auto;margin:0 auto;border:1px solid var(--rule);background:var(--wash)}
+.fig figcaption{max-width:var(--w);margin:.7rem auto 0;font:400 .8125rem/1.5 var(--sans);color:var(--muted);
+  padding-top:.5rem;border-top:1px solid var(--ink)}
+
+.totop{position:fixed;right:1rem;bottom:1rem;width:2.75rem;height:2.75rem;display:none;align-items:center;
+  justify-content:center;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;
+  opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;z-index:40}
+.js .totop{display:flex;pointer-events:none}
+.totop.show{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--ink);color:#fff}
+.totop svg{width:16px;height:16px}
+
+@media (max-width:480px){
+  .page{padding-left:1rem;padding-right:1rem}
+  .bar-in{padding:0 1rem}
+  .panel-in{right:1rem;width:calc(100vw - 2rem)}
+  blockquote{padding-left:1rem}
+}
+@media print{
+  .bar,.totop,.toc{display:none}
+  body{font-size:11.5pt}
+  a{text-decoration:none}
+}
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-rose-600 selection:text-white">
-    <!-- Header / Hero Section -->
-    <header class="w-full px-6 py-12 md:py-20 flex flex-col items-center justify-center text-center">
-        <div class="max-w-3xl mx-auto space-y-6">
-            <span class="inline-block py-1 px-4 rounded-full bg-rose-950/60 border border-rose-800 text-rose-400 text-xs md:text-sm font-semibold tracking-widest uppercase animate-pulse">
-                Расследование
-            </span>
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white drop-shadow-sm">
-                Путингейт. <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-red-600">Скоро</span>
-            </h1>
-            <div class="w-24 h-1 bg-rose-600 mx-auto rounded-full"></div>
-        </div>
-    </header>
+<body>
+<a class="skip" href="#content">К тексту</a>
 
-    <!-- Main Content / Questions Section -->
-    <main class="w-full max-w-2xl mx-auto px-6 py-8 flex-grow">
-        <div class="space-y-4">
-            <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl transition-all duration-300 hover:border-slate-700 hover:bg-slate-900">
-                <p class="text-lg md:text-xl font-medium text-slate-200">
-                    Сколько у Путина детей?
-                </p>
-            </div>
+<header class="bar" id="bar">
+  <div class="bar-in">
+    <a class="bar-title" id="barTitle" href="#top">Путингейт</a>
+    <button class="bar-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="panel">
+      <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M0 2h14v1.6H0zM0 6.2h14v1.6H0zM0 10.4h14V12H0z" fill="currentColor"/></svg>
+      Содержание
+    </button>
+  </div>
+  <div class="panel" id="panel" hidden><div class="panel-in"><nav aria-label="Содержание"><ol><li><a href="#girls"><span class="n">01</span><span class="t">Владимир Путин никогда не интересовался девушками</span></a></li><li><a href="#groom"><span class="n">02</span><span class="t">Почему надо жениться, даже если не хочется</span></a></li><li><a href="#courtship"><span class="n">03</span><span class="t">Вынужденные отношения — плохое начало</span></a></li><li><a href="#cuckold"><span class="n">04</span><span class="t">Президент-рогоносец</span></a></li><li><a href="#macho"><span class="n">05</span><span class="t">Как президенту создавали имидж героя-любовника</span></a></li><li><a href="#cover"><span class="n">06</span><span class="t">Как Путин убедил весь мир, что у него роман с Алиной Кабаевой</span></a></li><li><a href="#paternity"><span class="n">07</span><span class="t">Как Путин использует журналистов, чтобы все поверили в его любовниц</span></a></li><li><a href="#sons"><span class="n">08</span><span class="t">Как сделать из Путина отца года</span></a></li><li><a href="#favorites"><span class="n">09</span><span class="t">Как Путин решил для себя проблему безопасного поиска любовников</span></a></li><li><a href="#conclusion"><span class="n">10</span><span class="t">Куда привела нас и Путина гомофобия</span></a></li></ol></nav></div></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
 
-            <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl transition-all duration-300 hover:border-slate-700 hover:bg-slate-900">
-                <p class="text-lg md:text-xl font-medium text-slate-200">
-                    Есть ли у президента любовницы?
-                </p>
-            </div>
+<main class="page" id="top">
+  <div class="masthead">
+    <h1>Путингейт</h1>
+    <p class="sub">Это не развидеть</p>
+    <details class="author"><summary>Автор: Иван Лузин — старший</summary><div class="author-body"><p>Калининградский активист и журналист, проводил пикеты, работал в штабе Алексея Навального, участвовал в выборах (до лишения пассивного избирательного права). После начала войны живет в Польше.</p></div></details>
+  </div>
+  <article id="content">
+    <div class="intro"><p>Есть вещи, которые находятся на виду, но их не замечаешь. А потом увидишь и не сможешь развидеть никогда.</p><p>Вот смотрите, Владимир Путин — гей.</p><p>Это правда, которую он скрывает 50 лет. Сначала шифровался сам. К сожалению, в нашем обществе так вынуждены делать многие гомосексуалы.</p><p>А 26 лет назад Путин стал главой страны и с тех пор его гомосексуальность прячут спецслужбы и администрация президента.</p><p>Вы спросите: как же так? Ведь мы сто раз читали про жену и дочерей Путина. А ещё была как минимум одна любовница и дочь от нее. А еще Алина Кабаева и её сыновья от Путина.</p><p>Все это — часть огромного, полувекового обмана.</p><p>Нам раз за разом демонстрируют, что Путин не просто "натурал", а настоящий бабник с любовницами и внебрачными детьми. Это вредно для его президентского имиджа. Это противоречит тому, что Путин рассказывает о семейных ценностях. Это мешает созданию образа надежного семьянина на выборах.</p><p>В этом нет никакого смысла, кроме одного — перебить любые возможные слухи о том, что на самом деле Владимир Путин — гей. Никто даже не задумается об этом, когда лучшие журналисты России пересчитывают его женщин и детей.</p><p>Давайте посмотрим, как нас обманывали. А в конце добавим перчинку — поговорим про то, как Путин решил для себя проблему поиска любовников.</p><nav class="toc" aria-labelledby="toc-h"><h2 id="toc-h" class="toc-h">Содержание</h2><ol><li><a href="#girls"><span class="n">01</span><span class="t">Владимир Путин никогда не интересовался девушками</span></a></li><li><a href="#groom"><span class="n">02</span><span class="t">Почему надо жениться, даже если не хочется</span></a></li><li><a href="#courtship"><span class="n">03</span><span class="t">Вынужденные отношения — плохое начало</span></a></li><li><a href="#cuckold"><span class="n">04</span><span class="t">Президент-рогоносец</span></a></li><li><a href="#macho"><span class="n">05</span><span class="t">Как президенту создавали имидж героя-любовника</span></a></li><li><a href="#cover"><span class="n">06</span><span class="t">Как Путин убедил весь мир, что у него роман с Алиной Кабаевой</span></a></li><li><a href="#paternity"><span class="n">07</span><span class="t">Как Путин использует журналистов, чтобы все поверили в его любовниц</span></a></li><li><a href="#sons"><span class="n">08</span><span class="t">Как сделать из Путина отца года</span></a></li><li><a href="#favorites"><span class="n">09</span><span class="t">Как Путин решил для себя проблему безопасного поиска любовников</span></a></li><li><a href="#conclusion"><span class="n">10</span><span class="t">Куда привела нас и Путина гомофобия</span></a></li></ol></nav></div>
+    <section id="girls" data-label="Владимир Путин никогда не интересовался девушками" data-n="01"><h2><span class="num">01</span>Почему Володе не нравятся девочки?</h2><p>Путин никогда не любил женщин и не интересовался ими.</p><p>Для президентских выборов 2000 года выпустили <a href="https://imwerden.de/pdf/ot_pervogo_litsa_razgovory_s_putinym_2000__ocr.pdf" target="_blank" rel="noopener noreferrer">книгу “От первого лица”</a>. Это вполне себе официальная биография будущего президента. В ней много искажений и умолчаний, но некоторые отголоски правды еще оставались. Дальше будет хуже.</p><p>И вот там учительница Путина прямо говорит:</p><blockquote><p>“… он вообще-то не особенно интересовался девочками.”</p></blockquote><p>Ну ладно, хулиганское детство, бывает.</p><p>Но по мере взросления ничего не меняется. В книге Путин вспоминает, как едет на внезапно большие заработанные деньги в Гагры — девушки в истории не фигурируют — только два парня.</p><figure class="fig" style="--w:500px"><img src="images/gagry.jpg" alt="Архивная чёрно-белая фотография: двое мужчин на палубе судна" width="648" height="424" loading="lazy" decoding="async"><figcaption>Путин с товарищем в поездке в Гагры. Фото из книги.</figcaption></figure><p>У Путина появляется автомобиль — катает он на нем друга Сергея Ролдугина. На спортивных сборах гуляет с товарищами исключительно мужского пола.</p></section>
+<section id="groom" data-label="Почему надо жениться, даже если не хочется" data-n="02"><h2><span class="num">02</span>Сбежавший жених</h2><p>Наконец, в биографии появляется невеста — заинтересованная в юном Путине девушка Люда. Это не будущая жена, другая Людмила. По словам Сергея Ролдугина, девушка заботилась о будущем президенте, переживала за его здоровье.</p><p>О том, чтобы Путин как-то заботился о Людмиле, в биографии ничего не упоминается.</p><p>Тем не менее дело шло к свадьбе, молодые люди подали заявление в ЗАГС, но внезапно Путин “сбегает из-под венца”. В книге он говорит, что отказался от свадьбы, чтобы не пришлось “потом мучиться и ей, и мне”.</p><p>В личном плане брак с женщиной был бы для Путина мучением, но для карьеры был необходим. Чтобы получать должности в Советском Союзе (и особенно — в КГБ, где работал подросший Володя), нужно было демонстрировать моральную устойчивость и стабильность — иметь семью. Особенно важно это было для работы чекиста заграницей.</p></section>
+<section id="courtship" data-label="Вынужденные отношения — плохое начало" data-n="03"><h2><span class="num">03</span>“Я за ним ухаживала!”</h2><p>И вторая попытка жениться оказалась успешной. Путин познакомился с другой Людмилой, стюардессой из Калининграда. Знакомство оказалось максимально удобным для молодого человека, который не интересуется женщинами: Людмила жила в другом городе, у нее не было телефона, свидания были возможны только изредка — когда появлялась возможность прилететь к Путину в Ленинград.</p><p>В книге период от первой встречи до свадьбы Людмила описывает так:</p><blockquote><p>“Три с половиной года я за ним ухаживала!”</p></blockquote><p>Путин же в это время демонстрировал незаинтересованность, подолгу опаздывал на свидания, ради которых девушка прилетала из Калининграда. И затем максимально странно сделал предложение — так, что судя по официальной биографии, Людмила в процессе этого разговора решила, что он хочет разорвать с ней отношения.</p><p>Но свадьба состоялась — доступ к карьерному росту и работе заграницей для Путина открылся.</p><p>После свадьбы отношение к Людмиле не улучшилось, да и заботы о появившихся дочерях Путин не демонстрировал. Вместо этого в свободное от работы в КГБ время молодой Владимир тусуется с друзьями. Друзьями-мужчинами — женщины в этом контексте не упоминаются.</p></section>
+<section id="cuckold" data-label="Президент-рогоносец" data-n="04"><h2><span class="num">04</span>Президент-рогоносец</h2><p>Мы знаем, чем закончилась история с супругой президента.</p><p>Людмила Путина была обделена вниманием мужа. И в какой-то момент в ее жизни появился другой мужчина. Спутником первой леди сначала неофициально, а затем и вполне законно стал организатор праздников для “Единой России” и Газпрома Артур Очеретный.</p><p>Журналисты выяснили, что господин Очеретный организовывал мероприятия, в которых принимала участие Людмила Путина, как минимум с 2004 года. В 2010 году, за три года до официального объявления о её разводе с президентом, Артур стал директором фонда Путиной — Центра развития русского языка. А через два с половиной года после развода стало известно, что бывшая жена Путина сменила фамилию на Очеретная. После этого вопросы об отношениях Людмилы и Артура отпали окончательно.</p><p>Можно считать это нормальными отношениями взрослых людей — супруги могут договориться, что ведут сексуальную и романтическую жизнь отдельно друг от друга. Все взрослые люди. Но для президентского имиджа слухи и тем более публикации о том, что Владимиру Путину — изменяет жена, были бы разрушительны.</p><p>Команда Алексея Навального считает, что именно за сохранение тайн президента Людмила Путина получила богатые отступные — офисное здание в центре Москвы и другое имущество, ранее переданное государством Центру развития русского языка. Сейчас организация называется Центр Развития Межличностных Коммуникаций, все также возглавляется Очеретным и обеспечивает завидный доход новой семьи Людмилы.</p></section>
+<section id="macho" data-label="Как президенту создавали имидж героя-любовника" data-n="05"><h2><span class="num">05</span>Выдуманный мачо</h2><p>После того, как Путин стал президентом, стало понятно, что его несчастливый брак не получится продать публике в качестве крепкой семьи.</p><p>Если бы дело было только в проблемах с женой, достаточно было бы предъявить общественности новую первую леди и дальше рассуждать про традиционные ценности. Разводом в России трудно кого-то удивить.</p><p>Но действительно страшным для имиджа президента было то, что станет известно о том, что в романтических отношениях он вообще не интересуется женщинами.</p><p>Чтобы перебить любые возможные слухи о сексуальной ориентации Путина, вместо образа примерного семьянина он стал создавать образ “крутого мужика”, которого желают все женщины России.</p><p>Система заработала на полную мощность задолго до развода: Путин публично управлял всеми возможными транспортными средствами, на камеру занимался спортом, снимался в окружении женщин.</p><p>Если вам больше 35, вы можете помнить песню “Такого, как Путин”, где расписывалось, каким замечательным мужчиной является российский президент. Песню исполняла группа “Поющие вместе”, недвусмысленно созвучная с пропутинским движением “Идущие вместе”. Благодаря продвижению на ведущих радиостанциях песня стала хитом — позже ее использовали в предвыборной кампании Путина.</p><p>Руководители “Идущих вместе” закрепляли образ востребованного у женщин мужчины с помощью эротического календаря. Правда, без фото самого президента — для календаря снялись в белье студентки МГУ. Девушкам подрисовали правильные месседжи вроде “Владимир Владимирович, всем бы такого мужчину”.</p><figure class="fig" style="--w:500px"><img src="images/calend.jpg" alt="Страница календаря: девушка в белье и текстовая плашка" width="748" height="576" loading="lazy" decoding="async"><figcaption>Страница календаря с сайта LoveOpium</figcaption></figure><p>Понятно, что песен, календаря с полуголыми девушками и катания на Ладе Калине недостаточно, чтобы поддерживать имидж крутого и, главное, гетеросексуального мужика, когда собственная жена годами строит отношения с другим мужчиной. Тут нужна новая женщина. И журналисты, которые будут готовы написать про нее.</p></section>
+<section id="cover" data-label="Как Путин убедил весь мир, что у него роман с Алиной Кабаевой" data-n="06"><h2><span class="num">06</span>Новое прикрытие</h2><p>Новую женщину предъявили публике в апреле 2008 года в газете “Московский корреспондент”. Все вопросы по поводу брошенного женой стареющего гея Путина статья снимала разом, так как судя по тексту, он не только сам развелся с супругой, но и вот-вот женится на эффектной гимнастке и депутатке от “Единой России” Алине Кабаевой.</p><p>Историю об отношениях Путина с Кабаевой и предполагаемой свадьбе выдумали и подсунули журналисту “Московского корреспондента”. Это подтверждается и тем, что ни родственники, ни близкие друзья Кабаевой о ее предполагаемом замужестве не знали.</p><p>Отец гимнастки на вопрос журналиста об отношении к свадьбе дочери с президентом России уточнил, какой президент имеется в виду — Медведев или Путин. При этом о подготовке к свадьбе он не знал и был уверен, что “если это произойдет, то он узнает первым”.</p><p>Впрочем, отец находился в другой стране и мог упустить важное изменение в личной жизни Алины. Но не могла не знать о таких новостях подруга Кабаевой, также знаменитая гимнастка и соседка по креслу в Госдуме Светлана Хоркина. Журналистам она обиженно заявила: “Я об этом ничего не знаю… несмотря на то, что я – лучшая подруга Алины.”</p><figure class="fig" style="--w:490px"><img src="images/hork.jpg" alt="Две женщины в зале заседаний" width="492" height="407" loading="lazy" decoding="async"><figcaption>Хоркина и Кабаева заседают в Госдуме. Фото: Коммерсант</figcaption></figure><p>Для поддержания интереса к истории появилась информация, что в редакцию газеты пришли люди из ФСБ. Но главным событием для привлечения внимания стала совместная пресс-конференция Путина и Сильвио Берлускони.</p><p>Спектакль был разыгран блестяще. На пресс-конференции собрались журналисты из мировых СМИ. Максимально лояльная президенту журналистка из кремлевского пула задала как будто смелый вопрос по поводу слухов о планируемом новом браке президента. Путин ответил речью, в которой назвал слухи неправдой, после чего выдал очевидно заранее приготовленное признание в симпатии к Кабаевой, ведущей новостей Екатерине Андреевой и всем российским женщинам.</p><p>Вряд ли президент Италии мог предположить, что после этой встречи с журналистами его слава самого известного президента-бабника померкнет на фоне российского коллеги. Спецоперация для подтверждения зашкаливающей мужественности Владимира Путина прошла успешно.</p><p>История закончилась хорошо и для журналистки, которая задала Путину вопрос про Кабаеву. Она <a href="https://declarator.org/person/2677/" target="_blank" rel="noopener noreferrer">сменила работу</a>, став референтом президента России. И надолго задержалась в администрации президента. В 2024 году ее <a href="https://tass.ru/politika/21024501" target="_blank" rel="noopener noreferrer">переназначили</a> на должности.</p></section>
+<section id="paternity" data-label="Как Путин использует журналистов, чтобы все поверили в его любовниц" data-n="07"><h2><span class="num">07</span>Определение отцовства по фотографии</h2><p>Вообще журналисты, которые занимаются расследованиями — подарок для пиарщиков Путина. Они очень мотивированы раскопать истории, которые кажутся им компроматом на президента. Поэтому достаточно подсунуть им через "источник" слабый намек для нужного вывода, а дальше они уже сами накопают подтверждений. Даже если подтверждения слабые — это мало кого остановит. Очень уж хочется, чтобы история получилась.</p><p>Именно так вышло со Светланой Кривоногих, якобы давней любовницей Путина.</p><p>Девушка — одна из многочисленных людей, на которых оформлены активы Путина на фантастические суммы. Это видно из документов, это подтверждают источники журналистов. Также она вероятно обслуживает его деловые интересы. Судя по попавшим в руки журналистов копиям документов, у нее есть дочь с отчеством Владимировна. И один (один!) раз они летели регулярным рейсом в одном самолете. Места были в разных рядах.</p><p>Этого оказалось достаточно, чтобы расследователи из издания Проект, а вслед за ними и огромная часть российского общества <a href="https://maski-proekt.media/tainaya-semya-putina/" target="_blank" rel="noopener noreferrer">уверились</a>, что Светлана — любовница президента и мать его дочери.</p><p>Ещё в расследовании было сравнение лиц Путина и дочери госпожи Кривоногих искусственным интеллектом. Решили, что похожи!</p><aside class="note"><p>Технологии определения родства по сходству людей на фотографиях действительно разрабатывают, однако именно родственников разных полов они <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9016696/#Tab4" target="_blank" rel="noopener noreferrer">определяют хуже</a>. А главное, такие технологии не дают надежного результата, они только предсказывают вероятность родства. То есть как отправная точка для поисков они пригодятся, а делать выводы и назначать алименты по ним нельзя.</p></aside><p>В общем нет, то, что двое однажды летели в одном самолёте — не подтверждение любовных отношений. И Путин не тот человек, который подарит любовнице долю в банке Россия или базу отдыха.</p><p>Он вообще говоря жмот. Общеизвестна история, когда мужу Екатерины Тихоновой, почти официальной дочери Путина, передали долю холдинга “Сибур”. Но после развода экс-зять был вынужден <a href="https://tvrain.tv/teleshow/fishman_vechernee_shou/lichnaja_zhizn_kremlevskih_zvezd-456110/" target="_blank" rel="noopener noreferrer">вернуть</a> ценное имущество.</p><p>Можно считать, что повезло Людмиле Путиной, которая вместе с новым мужем продолжает сдавать в аренду переданный связанному с ней фонду офисный центр. Но формально она даже не учредитель в этом фонде — в любой момент деньги могут направиться в другом направлении. Когда журналист пишет, что кто-то стал владельцем действительно ценного актива благодаря Путину, нужно делать оговорку: “временно владеет в интересах российского президента”.</p><p>Тем не менее для пиара Путина эффект истории со Светланой Кривоногих оказался впечатляющим. На мировом уровне есть уверенность, что найдены тайная жена и еще одна дочь президента. Как такого бабника можно заподозрить в гомосексуальности?</p></section>
+<section id="sons" data-label="Как сделать из Путина отца года" data-n="08"><h2><span class="num">08</span>Сыновья Кабаевой</h2><p>Но мы зря забыли про Алину. У истории есть милое продолжение — журналисты нашли их с Путиным сыновей! Правда, путаются в показаниях — то ли двух, то ли трех, то ли четырех. Не важно. Зато президент играет со старшим сыном в хоккей на специално построенной арене! Просто отец года.</p><p>О том, что Кабаева родила от Путина детей, <a href="https://www.tagesanzeiger.ch/putins-sohn-wurde-im-tessin-geboren-648161452864" target="_blank" rel="noopener noreferrer">написала</a> швейцарская газета SonntagsZeitung. Журналистам об этом рассказал анонимный знакомый то ли Кабаевой, то ли врача, принимавшей роды (а может и обоих — из статьи не совсем понятно). Знакомый или знакомая не сдерживал себя в подробностях. Например, мы узнали, что Кабаева ни с кем больше не имела отношений, так как это опасно для нее.</p><p>Вслед за газетой из Швейцарии с анонимными источниками поработал центр Досье. Их источниками <a href="https://dossier.center/succession/" target="_blank" rel="noopener noreferrer">стали</a> аноним из обслуживающего персонала резиденций Путина и неназванный “бизнесмен, работающий с другом Путина”. От бизнесмена журналисты смогли узнать, как Путин принимал решения о родах. А от работника резиденции — подробности того, как мальчики живут и играют в хоккей с президентом.</p><p>Текст получился впечатляющим по объему, но собранные расследователями многочисленные документы о перемещениях и образе жизни Кабаевой, Путина и множества других людей, никак не подтверждают то, что Путин действительно стал отцом двух мальчиков.</p><p>И в тексте центра Досье, и у их швейцарских коллег используется одна схема. Журналистам подсовывают информаторов с сенсационным компроматом на президента. Но информация оказывается максимально выгодной для пиара Путина — вон у него с молодой женой новые дети, он о них заботится, обеспечивает всем самым лучшим по мере своих почти неограниченных возможностей.</p><p>Никаких надёжных подтверждений словам анонимных источников нет. Но журналистов-расследователей это не останавливает.</p><p>Забавно, что журналисты центра Досье сами опровергли историю про детей Путина и Кабаевой, хотя и не заметили этого. Спустя время они же <a href="https://dossier-center.appspot.com/fso/" target="_blank" rel="noopener noreferrer">взяли</a> интервью у сбежавшего из России сотрудника Федеральной службы охраны, который занимался президентской спецсвязью. Интервью он дал под своим именем, с открытым лицом. Журналист спросил у него про детей и Кабаеву. И сотрудник ФСО ответил, что есть какие-то слухи на эту тему, но у него нет никаких надежных подтверждений. В обсуждениях с коллегами из других отделов сыновья и спутница упоминались только на уровне слухов. При том, что фсошник до побега тринадцать лет сопровождал Путина, обеспечивая связь.</p><p>Объяснить это несоответствие довольно просто — как и в 2008 году никакой романтической связи между Путиным и Кабаевой нет. Это обманка, которую нам показывают для создания правильного имиджа президента.</p></section>
+<section id="favorites" data-label="Как Путин решил для себя проблему безопасного поиска любовников" data-n="09"><h2><span class="num">09</span>Фавориты</h2><p>Вот представьте. Вы президент огромной страны, ваша власть почти безгранична. У вас дворцы, яхты и собственный бронепоезд.</p><p>При этом вы гей, который никак не может признаться в своих сексуальных предпочтениях. С кем вам спать? Где найти партнера для секса?</p><p>Сайты знакомств вам не подойдут — все-таки вы президент, который скрывает свою гомосексуальность. К тому же вы не пользуетесь интернетом. В баре с такой известностью тоже не подкатишь к понравившемуся парню.</p><p>Делать нечего. Вы одиноко булькаете в <a href="https://st.navalny.com/media/cache/18/4c/184c71fb7d8ae2e362d1cbebb0547880.jpg" target="_blank" rel="noopener noreferrer">позолоченных джакузи</a>, грустно возлежите в <a href="https://ichef.bbci.co.uk/ace/ws/800/cpsprodpb/AADA/production/_116583734_whatsubject.jpg.webp" target="_blank" rel="noopener noreferrer">вычурном будуаре</a>…</p><p>Стоп!</p><p>Ведь вокруг есть красивые, спортивные, молодые, лично преданные парни — сотрудники федеральной службы охраны. Да еще и полностью, на 100% от вас зависимые. Вся их жизнь, карьера, все надежды на будущее крутится вокруг вас и вашей безопасности.</p><p>На каждого из этих парней у вас есть подробное личное дело, психологический портрет, семейная история — вы можете прочитать папочку и найти индивидуальный подход к каждому.</p><p>И вот. Мы регулярно наблюдаем за внезапными и буквально необъяснимыми назначениями охранников Путина на важные государственные должности. Часто эти должности неадекватны их опыту и возможностям. Оказалось, что традиционные ценности — это когда у главы государства есть фавориты и он раздает им регионы России на кормление. Ну что ж, действительно в России есть такие традиции — ещё от Екатерины Второй.</p><p>Алексей Дюмин работал в федеральной службе охраны, охранял лично Путина, был его адъютантом и начальником охраны. Буквально ночевал на работе — <a href="https://www.gazeta.ru/politics/2016/02/02_a_8054219.shtml" target="_blank" rel="noopener noreferrer">по словам</a> знакомого “во время своих дежурств даже ночевал с тогдашним премьером в одном доме в Ново-Огарево”. Знакомый вспоминал, что Дюмин</p><blockquote><p>“никогда не торопился с работы домой”</p></blockquote><p>Можно ли доверять таким “знакомым”? Это анонимные источники, но разговаривали с ними журналисты не для расследования, а для комплементарной заметки о назначении Дюмина.</p><p>За ночевки с президентом бывший охранник президента был вознагражден — стал заместителем министра обороны, а следом — губернатором Тульской области.</p><p>Возможно, что у Дюмина были и несексуальные заслуги перед Путиным. Куда более постыдные. В медиа появлялись истории про его участие в захвате Крыма и даже в вывозе Януковича из Украины. Нельзя утверждать, правда ли это или часть легенды для объяснения назначения. Однако обычный исполнитель получил бы за такие заслуги медаль, квартиру и непыльную должность в каком-нибудь “фонде ветеранов”. Дюмин же наработал на целый российский регион.</p><figure class="fig" style="--w:500px"><img src="images/kur.jpg" alt="Двое мужчин у автомобиля" width="767" height="548" loading="lazy" decoding="async"><figcaption>Александр Куренков и Владимир Путин. Фото: Коммерсант</figcaption></figure><p>Стремительную и необъяснимую карьеру сделал Александр Куренков. На фото это брутальный лысеющий мужчина справа. Как минимум с 2015 года он работал адъютантом президента, дослужился до старшего адъютанта (чтобы это не значило). В 21 году Куренков ненадолго стал заместителем еще одного близкого человека и бывшего охранника президента Виктора Золотова. А уже через несколько месяцев внезапно оказался федеральным министром — главой МЧС.</p><p>Сергей Морозов по подсчетам журналистов стал четвертым по счету охранником Путина, получившим личный регион. Как и Дюмин, он работал в ФСО, затем счастливым образом оказался в министерстве обороны у Шойгу, а затем был назначен исполняющим обязанности губернатора Астраханской области. Но что-то пошло не так и протеже не дотянул даже до первых формальных выборов. На замену ему Путин прислал другого бывшего силовика — Игоря Бабушкина. Это лихой пулеметчик в берете с фото.</p><figure class="fig" style="--w:500px"><img src="images/babush.jpg" alt="Люди на лётном поле у самолёта, на переднем плане вооружённый человек в берете" width="800" height="574" loading="lazy" decoding="async"><figcaption>Игорь Бабушкин с пулеметом охраняет Путина, фото: Арбуз</figcaption></figure><p>Только на самых заметных должностях бывших охранников и адъютантов Путина с десяток. Сколько охранников были обласканы президентом, но остались в тени, можно только догадываться.</p></section>
+<section id="conclusion" data-label="Куда привела нас и Путина гомофобия" data-n="10"><h2><span class="num">10</span>Заключение</h2><p>Может показаться, что я осуждаю Путина за то, что он гей. Это не так.</p><p>Нет ничего плохого в том, что мужчина предпочитает секс с мужчинами. Само по себе это нормально.</p><p>И кто знает, как сложилась бы история России, если бы юный Володя жил в обществе, которое спокойно относится к гомосексуальности. Возможно, он нашел бы свою настоящую любовь — мужчину, с которым был бы счастлив.</p><p>К сожалению, та часть Ленинграда, где прошли детство и юность Путина, не была такой толерантной, как нынешний Петербург. И юный Володя с детства привык лицемерить. Ничего хорошего из этой привычки не получилось.</p><aside class="note"><p>При подготовке материала мы направили запросы в издание Проект, центр Досье и администрацию президента России. Ответов не последовало.</p></aside></section>
+  </article>
+</main>
 
-            <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl transition-all duration-300 hover:border-slate-700 hover:bg-slate-900">
-                <p class="text-lg md:text-xl font-medium text-slate-200">
-                    Почему Людмила Путина бросила мужа?
-                </p>
-            </div>
+<button class="totop" id="totop" type="button" aria-label="Наверх">
+  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6 6-1.2 1.2L8.9 5.3V14H7.1V5.3L3.2 9.2 2 8z" fill="currentColor"/></svg>
+</button>
 
-            <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl transition-all duration-300 hover:border-slate-700 hover:bg-slate-900">
-                <p class="text-lg md:text-xl font-medium text-slate-200">
-                    Как получают должности любимчики президента?
-                </p>
-            </div>
-        </div>
-    </main>
+<script>
+(function(){
+  var root=document.documentElement; root.classList.remove('no-js'); root.classList.add('js');
+  var btn=document.getElementById('menuBtn'), panel=document.getElementById('panel'),
+      prog=document.getElementById('progress'), top=document.getElementById('totop'),
+      barTitle=document.getElementById('barTitle'), defTitle=barTitle.textContent;
+  var links=[].slice.call(panel.querySelectorAll('a'));
+  var secs=[].slice.call(document.querySelectorAll('section[id]'));
 
-    <!-- Footer -->
-    <footer class="w-full py-8 text-center text-slate-600 text-xs md:text-sm tracking-wider uppercase border-t border-slate-900 mt-12">
-        <p>Следите за обновлениями</p>
-    </footer>
+  function setOpen(o){
+    panel.hidden=!o; btn.setAttribute('aria-expanded',o?'true':'false');
+  }
+  btn.addEventListener('click',function(e){e.stopPropagation(); setOpen(panel.hidden);});
+  panel.addEventListener('click',function(e){ if(e.target.closest('a')) setOpen(false); e.stopPropagation(); });
+  document.addEventListener('click',function(){ if(!panel.hidden) setOpen(false); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && !panel.hidden){ setOpen(false); btn.focus(); }
+  });
+  top.addEventListener('click',function(){ window.scrollTo({top:0}); });
+
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var h=document.documentElement, max=h.scrollHeight-window.innerHeight, y=window.scrollY||h.scrollTop;
+    prog.style.setProperty('--p', max>0 ? Math.min(1,Math.max(0,y/max)).toFixed(4) : 0);
+    top.classList.toggle('show', y>900);
+    // текущий раздел: последний, верх которого выше линии чтения
+    var line=window.innerHeight*0.3, cur=null;
+    for(var i=0;i<secs.length;i++){ if(secs[i].getBoundingClientRect().top<=line) cur=secs[i]; }
+    links.forEach(function(a){
+      var on=cur && a.getAttribute('href')==='#'+cur.id;
+      if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+    if(cur){
+      barTitle.innerHTML='<span class="bn">'+cur.getAttribute('data-n')+'</span>';
+      barTitle.appendChild(document.createTextNode(cur.getAttribute('data-label')));
+    } else { barTitle.textContent=defTitle; }
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  update();
+})();
+</script>
 </body>
 </html>
